@@ -26,6 +26,7 @@ FILE_IDS = {
     'FBS':  'PASTE_ID_HERE',   # FoodBalanceSheets_E_All_Data_(Normalized).zip
     'PP':   'PASTE_ID_HERE',   # Prices_E_All_Data_(Normalized).zip
     'TM':   'PASTE_ID_HERE',   # Trade_DetailedTradeMatrix_E_All_Data_(Normalized).zip  (large, ~500MB)
+    'TCL':  'PASTE_ID_HERE',   # Trade_CropsLivestock_E_All_Data_(Normalized).zip (totals + USD values, Shruti's price layer)
     'WFP':  'PASTE_ID_HERE',   # Mekonnen-Hoekstra Report 47 Appendix II (water footprints, xlsx)
 }
 
@@ -36,6 +37,7 @@ FAO_FALLBACK = {
     'FBS':  'https://bulks-faostat.fao.org/production/FoodBalanceSheets_E_All_Data_(Normalized).zip',
     'PP':   'https://bulks-faostat.fao.org/production/Prices_E_All_Data_(Normalized).zip',
     'TM':   'https://bulks-faostat.fao.org/production/Trade_DetailedTradeMatrix_E_All_Data_(Normalized).zip',
+    'TCL':  'https://bulks-faostat.fao.org/production/Trade_CropsLivestock_E_All_Data_(Normalized).zip',
 }
 
 
@@ -61,7 +63,7 @@ def _fetch(key):
 def load_bulk(key, chunk_filter=None):
     """Load a FAOSTAT bulk dataset as a DataFrame.
 
-    key: one of QCL, SDGB, ET, FBS, PP, TM
+    key: one of QCL, SDGB, ET, FBS, PP, TM, TCL
     chunk_filter: optional function(df_chunk) -> df_chunk, applied while streaming.
                   Use for TM (large), e.g. lambda d: d[d['Item Code'] == 44]
     """

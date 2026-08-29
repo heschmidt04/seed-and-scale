@@ -34,6 +34,7 @@ EXPECTED = {
     'fbs_bulk.zip':          'FBS',
     'pp_bulk.zip':           'PP',
     'tm_bulk.zip':           'TM',
+    'tcl_bulk.zip':          'TCL',
     'water_footprints.xlsx': 'WFP',
 }
 
