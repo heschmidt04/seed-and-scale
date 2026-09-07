@@ -2,6 +2,75 @@
 
 *Last updated Sept 7, 2026 by Heidi. Read this first if you're opening this repo for the first time or you've lost track of which notebook does what.*
 
+## Start here if you're Daniela (or anyone who isn't living in the code)
+
+You only need to know three things:
+
+1. Everything that actually made it into the video comes from one folder: **`summary/`**. If you open nothing else, open `summary/WiD_Summary_TheWaterBill.ipynb`. It's written top to bottom as a story, not as scratch code.
+2. **`discovery/`** is our scratch work and dead ends, kept for the record and for judges who ask "how did you get there." You don't need to open it unless you're curious.
+3. **`docs/`** has the two Word docs: the rice-code reference sheet, and the problem statement with the exact numbers we're claiming in the video.
+
+Everything below this point is for whoever's writing code.
+
+## Proposed file layout
+
+Right now everything sits loose at the top level of the repo. Since the team is a mix of technical and non-technical folks, grouping by *purpose* (not by person or by date) makes it obvious at a glance what's safe to ignore and what matters for the video:
+
+```
+seed-and-scale/
+├── README.md                  <- one-paragraph pointer to PROJECT_WORKFLOW.md
+├── PROJECT_WORKFLOW.md         <- this file
+├── docs/
+│   ├── WiD_CodesForRiceAndConfusion.docx
+│   ├── datathon_initial_ideas_09072026.docx
+│   └── datathon_initial_ideas_08292026.docx   (kept for history)
+├── discovery/
+│   ├── wid_foastat_thirsty_crops_eda_20260819.ipynb
+│   ├── Reverse_Water_Stress_Crop_Driver.ipynb
+│   ├── Water_Burden_Explorer.ipynb
+│   ├── Barley_Water_Risk_Simulator.ipynb
+│   ├── QCL_all_Rice_Data_code28.ipynb
+│   ├── QCL_all_Rice_Data_code30.ipynb
+│   └── QCL_TCL_Cotton_Data.ipynb
+├── summary/
+│   └── WiD_Summary_TheWaterBill.ipynb   <- built today, this is the deliverable
+└── scripts/
+    ├── colab_data_loader.py
+    └── setup_drive_folder.py
+```
+
+Folder names carry the meaning instead of numbers, since "discovery vs. summary" reads clearly to Daniela without needing a legend, and the ordering *within* discovery is already explained in prose in the inventory table below (oldest/most-historical first). If you'd rather have numeric prefixes too (`01_`, `02_`...) for strict read-order, say so and I'll fold that in, but I'd lean against it, it adds churn for not much extra clarity once this doc exists.
+
+**One thing to flag before you run this**: if anyone on the team has a saved Colab bookmark pointing at `github/heschmidt04/seed-and-scale/blob/main/<filename>.ipynb`, moving files into subfolders changes that path (it becomes `.../main/discovery/<filename>.ipynb`). That only breaks once this merges to `main`, not on your branch, but worth a heads-up in the group chat when it does.
+
+`Seed_and_scale.ipynb` and the `Datathon_2026-...zip` aren't in the layout above, I didn't want to guess at those without checking what's in them, let me know if you want them placed (or the zip just deleted if it's a redundant Drive export).
+
+### Commands to run (I can't run these on your machine myself, this session doesn't have shell access to your computer, just file read/write)
+
+```bash
+mkdir -p discovery summary docs scripts
+
+git mv wid_foastat_thirsty_crops_eda_20260819.ipynb discovery/
+git mv Reverse_Water_Stress_Crop_Driver.ipynb discovery/
+git mv Water_Burden_Explorer.ipynb discovery/
+git mv Barley_Water_Risk_Simulator.ipynb discovery/
+git mv QCL_all_Rice_Data_code28.ipynb discovery/
+git mv QCL_all_Rice_Data_code30.ipynb discovery/
+git mv QCL_TCL_Cotton_Data.ipynb discovery/
+
+git mv WiD_CodesForRiceAndConfusion.docx docs/
+git mv datathon_initial_ideas_09072026.docx docs/
+git mv datathon_initial_ideas_08292026.docx docs/
+
+git mv colab_data_loader.py scripts/
+git mv setup_drive_folder.py scripts/
+
+git add PROJECT_WORKFLOW.md
+git commit -m "Reorganize into discovery/summary/docs/scripts, add project workflow map"
+```
+
+`summary/WiD_Summary_TheWaterBill.ipynb` doesn't exist yet, that's the next thing to build, straight into the new `summary/` folder.
+
 ## The short version
 
 We pivoted. The project started as a barley/beer story ("Thirsty Crops"), but barley's top producer (Russia) isn't water-stressed, which broke the narrative. As of Sept 7, the project is **rice-focused**, built around a deliverable Daniela named **"The Water Bill"**: a water-exposure score for a country's rice imports, with a shock-simulation feature (what happens if a stressed supplier's crop drops 10/20/30%) and an alternative-supplier recommendation.
@@ -9,6 +78,8 @@ We pivoted. The project started as a barley/beer story ("Thirsty Crops"), but ba
 The barley work isn't wasted. `Barley_Water_Risk_Simulator.ipynb` already built the exact pipeline shape we need (production, water-stress join, trade dependency, shock simulation, AI brief), just pointed at the wrong crop. Most of today's work is **porting that pipeline onto the rice data**, not building from zero.
 
 ## Notebook & document inventory
+
+*(Filenames below are the current, pre-reorg names at repo root. The folder layout above is a proposal to poke at, not done yet, once you and the team land on it, these paths just get a folder prefix.)*
 
 | File | Author(s) | What it covers | Status | Role now |
 |---|---|---|---|---|
