@@ -64,6 +64,31 @@ Two concrete examples:
 
 Saving changes made inside Colab back to GitHub: **File > Save a copy in GitHub**, then pick the *same* repo, branch, and path so it overwrites in place instead of creating a duplicate file somewhere.
 
+## Part 3.5: Checking in a run of `WiD_Summary_TheWaterBill.ipynb`
+
+This notebook is written to be run in Colab (it needs FAOSTAT's bulk-download domain, which this
+assistant's own sandbox can't reach). Once you `Run All`, here's the loop for getting the populated
+version, plus the charts and tables it produces, back into the repo:
+
+1. In Colab, `Run All`. Every chart and table lands in one `outputs/` folder inside that Colab
+   session (the notebook creates this itself in Section 0), rather than scattered across the session's
+   root directory.
+2. In Colab's left-hand file panel, right-click the `outputs` folder and **Download** -- one zip with
+   all 4 PNGs and all 4 CSVs.
+3. **File > Save a copy in GitHub**, same repo/branch/path as always (`heschmidt04/seed-and-scale`,
+   `wid_summary`, `summary/WiD_Summary_TheWaterBill.ipynb`) -- this overwrites the code-only version
+   with the run version, cell outputs and all.
+4. On your Mac: `git pull`, unzip the downloaded folder into `summary/outputs/` (create it if it
+   doesn't exist), then `git add summary/outputs summary/WiD_Summary_TheWaterBill.ipynb && git commit
+   && git push`. Notebook and exported files land in the same commit.
+
+This is also the mechanism for a quick sanity check with Claude mid-session, not just the final push:
+Save a copy in GitHub, `git pull`, and the run version is sitting in your local folder where it can be
+read directly, no separate export or upload step needed for the notebook itself. If you're mid-iteration
+and don't want a commit yet, downloading the `.ipynb` directly from Colab's file panel (rather than
+Save-a-copy-in-GitHub) and dropping it anywhere in the local repo folder works too, without touching git
+at all until you're ready.
+
 ## Part 4: Getting `wid_summary` published and the PR opened (your actual next step)
 
 Your local `wid_summary` branch is committed and clean but hasn't touched GitHub yet. I don't have a shell on your Mac in this session, just file read/write, so these are commands for you to run, and I'm glad to walk through them with you one at a time if you'd rather do that than run the whole block at once.

@@ -33,7 +33,10 @@ seed-and-scale/
 │   ├── QCL_all_Rice_Data_code30.ipynb
 │   └── QCL_TCL_Cotton_Data.ipynb
 ├── summary/
-│   └── WiD_Summary_TheWaterBill.ipynb   <- built today, this is the deliverable
+│   ├── WiD_Summary_TheWaterBill.ipynb   <- built today, this is the deliverable
+│   └── outputs/                          <- charts (PNG) + tables (CSV) exported by the notebook's
+│                                             last section, so Daniela has standalone files for the
+│                                             video without opening Colab
 └── scripts/
     ├── colab_data_loader.py
     └── setup_drive_folder.py
