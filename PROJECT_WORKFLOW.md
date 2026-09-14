@@ -1,16 +1,54 @@
 # Project Workflow & Notebook Map: The Water Bill
 
-*Last updated Sept 7, 2026 by Heidi. Read this first if you're opening this repo for the first time or you've lost track of which notebook does what.*
+*Last updated Sept 14, 2026 by Kaveesha. Read this first if you're opening this repo for the first time or you've lost track of which notebook does what.*
 
 ## Start here if you're Daniela (or anyone who isn't living in the code)
 
-You only need to know three things:
+You only need to know four things:
 
-1. Everything that actually made it into the video comes from one folder: **`summary/`**. If you open nothing else, open `summary/WiD_Summary_TheWaterBill.ipynb`. It's written top to bottom as a story, not as scratch code.
-2. **`discovery/`** is our scratch work and dead ends, kept for the record and for judges who ask "how did you get there." You don't need to open it unless you're curious.
-3. **`docs/`** has the two Word docs: the rice-code reference sheet, and the problem statement with the exact numbers we're claiming in the video.
+1. Everything that actually made it into the video comes from one folder: **`summary/`**. If you open nothing else, open `summary/WiD_Summary_TheWaterBill_Combined.ipynb` - it merges the original Water Bill notebook and the later Backup Gap notebook into one, written top to bottom as a story, not as scratch code. (`summary/components/` holds the earlier, separate pieces it was assembled from - not needed unless you're comparing history.)
+2. **`summary/water-bill.html`** is a standalone interactive companion page: pick an importer, see its supplier mix, run the shock scenario, and see the ranked backup-supplier plan, live in a browser, no Colab needed. See "Recent changes" below for how its data relates to the notebook.
+3. **`discovery/`** is our scratch work and dead ends, kept for the record and for judges who ask "how did you get there." You don't need to open it unless you're curious.
+4. **`docs/`** has the two Word docs: the rice-code reference sheet, and the problem statement with the exact numbers we're claiming in the video.
 
 Everything below this point is for whoever's writing code.
+
+## Recent changes (Sept 14, 2026)
+
+`summary/WiD_Summary_TheWaterBill_Combined.ipynb` merges the original Water Bill notebook and the
+later Backup Gap notebook (`summary/components/WiD_Summary_TheBackupGap.ipynb`) into one notebook.
+Since the merge, it's been through a cleanup pass to get it ready to share outside the team:
+
+- **Section headers de-numbered, then renumbered.** The `[TODO-<n> | Component]` labels described
+  below in "Section-labeling convention" were dropped down to just `[Component]` (the TODO tracking
+  was internal bookkeeping, not needed once the sections were built). They were then reworked into
+  a full `Section N:` outline for easier navigation (e.g. `Section 4: [Water Exposure]`, `Section
+  8.2 how much spare export capacity...`) - the convention section below still describes the older,
+  pre-renumbering style; treat the notebook's actual headers as the source of truth.
+- **Scrubbed for an external audience.** Individual names, internal file citations (this doc,
+  `GIT_RUNBOOK.md`, the `docs/*.docx` files, the `discovery/` notebooks), and internal production
+  language ("the video," "the deck," "bring this to the team") were removed or reworded so the
+  notebook reads as a standalone analysis. References to content that used to live in the separate
+  Water Bill and Backup Gap notebooks were repointed to the in-notebook section instead, now that
+  both are merged into one file.
+- **Dead sections removed:** the old "exports for the deck" CSV cell, the "Process to save directly
+  to GitHub" cell (duplicated `GIT_RUNBOOK.md`), and the "Video-ready exports" Colab/GitHub
+  save-workflow cell.
+- **`[Viz][Country Trend View]` reworked.** Its interactive picker was removed (wasn't returning
+  results), so the section now only describes the four static per-country charts it still builds
+  (India, Pakistan, Egypt, Viet Nam). It was also moved earlier, right after Section 4's Water
+  Exposure sub-sections, since that's the only place its data actually comes from.
+- **`[Credibility check]` kept, deliberately.** It still flags two unresolved discrepancies -
+  Pakistan's claimed rice water volume (4.97 km3 vs. 14.29 km3 computed) and Egypt's claimed rice
+  import share (83% claimed vs. 5.29% computed - the computed figure looks more consistent with
+  Egypt's actual rice self-sufficiency) - worth resolving before this notebook is called final.
+- **Bug fix:** `import re` was missing (needed by `_slugify()` for the trend-chart filenames);
+  added to the Section 0 setup cell.
+- **`summary/water-bill.html`** is a separate, standalone interactive page, not generated
+  automatically from the notebook - but its `DATA.candidates` ranking and its `plan()` allocation
+  logic are a hand-ported mirror of the notebook's Backup Gap `scale_up_plan`/`close_gap` machinery.
+  If the Backup Gap section's headroom or candidate-ranking logic changes, this page's data needs
+  updating separately to match.
 
 ## Proposed file layout
 
@@ -95,7 +133,8 @@ The barley work isn't wasted. `Barley_Water_Risk_Simulator.ipynb` already built 
 | `QCL_TCL_Cotton_Data.ipynb` | Shruti | Cotton production/trade, parallel structure to rice | Out of scope for now | Deprioritized (not part of the rice story) |
 | `WiD_CodesForRiceAndConfusion.docx` | Heidi | Reference: which rice item codes to use for production/export and which to avoid (29, 32, 30 as a direct substitute) and why | Complete | Documentation, cite this if anyone asks "why code 28+31?" |
 | `datathon_initial_ideas_09072026.docx` | Daniela + team | Problem statement, "Water Bill" deliverable spec, meeting notes, RACI history | Living document | Source of truth for scope and the exact numbers the video needs to hit |
-| `WiD_Summary_TheWaterBill.ipynb` (new) | Heidi, built today | Ports the barley water-join and shock-sim logic onto the rice data; produces the final charts, table, and CSV | **To build this session** | **Final summary notebook** |
+| `WiD_Summary_TheWaterBill_Combined.ipynb` | merged from the Water Bill and Backup Gap notebooks | Full rice x water-stress analysis: water exposure, supplier concentration, shock scenario, capacity-constrained backup-gap analysis, and scale-up planning; produces the final charts, tables, and CSVs | Built, cleaned up for external sharing (see "Recent changes" above) | **Final summary notebook** |
+| `water-bill.html` | hand-built companion to the summary notebook | Standalone interactive page: pick an importer, see its supplier mix, shock scenario, and ranked backup-supplier plan, live in a browser | Built | **Interactive companion to the final summary notebook** |
 
 ## To-do tracker (ties to the Water Bill's 4 components)
 
