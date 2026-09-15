@@ -25,3 +25,12 @@ rather than an assumed unlimited one — ranks who could realistically scale up 
   walkthrough video for the datathon submission.
 - **[PROJECT_WORKFLOW.md](PROJECT_WORKFLOW.md)** — the full map of every notebook and doc in this
   repo, what each one covers, and a log of recent changes.
+
+## Team
+
+Built by **Team Seed & Scale** for the 2026 Women in Data "What's Cooking?" Datathon:
+
+- [Daniela Matinho](https://github.com/dmatinho)
+- [Heidi Schmidt](https://github.com/heschmidt04)
+- [Shruti Kulkarni](https://github.com/shrutivkulkarni)
+- [Kaveesha Shah](https://github.com/ksshah)
