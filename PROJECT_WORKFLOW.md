@@ -4,12 +4,13 @@
 
 ## Start here if you're new to this repo (or anyone who isn't living in the code)
 
-You only need to know four things:
+You only need to know five things:
 
 1. Everything that actually made it into the video comes from one folder: **`summary/`**. If you open nothing else, open `summary/WiD_Summary_TheWaterBill_Combined.ipynb` - it merges the original Water Bill notebook and the later Backup Gap notebook into one, written top to bottom as a story, not as scratch code. (`summary/components/` holds the earlier, separate pieces it was assembled from - not needed unless you're comparing history.)
-2. **`summary/water-bill.html`** is a standalone interactive companion page: pick an importer, see its supplier mix, run the shock scenario, and see the ranked backup-supplier plan, live in a browser, no Colab needed. See "How the notebook flows" below for how its data relates to the notebook.
-3. **`discovery/`** is our scratch work and dead ends, kept for the record and for judges who ask "how did you get there." You don't need to open it unless you're curious.
-4. **`docs/`** has the two Word docs: the rice-code reference sheet, and the problem statement with the exact numbers we're claiming in the video.
+2. **[Interactive dashboard](https://dmatinho.github.io/seed-and-scale/summary/water-bill.html)**: pick an importer, see its supplier mix, run the shock scenario, and see the ranked backup-supplier plan, live in a browser, no Colab needed. See "How the notebook flows" below for how its data relates to the notebook.
+3. **`summary/water-bill.html`** is the dashboard's source code, in this repo - not auto-generated from the notebook, see "How the notebook flows" below for how the two are kept in sync.
+4. **`discovery/`** is our scratch work and dead ends, kept for the record and for judges who ask "how did you get there." You don't need to open it unless you're curious.
+5. **`docs/`** has the two Word docs: the rice-code reference sheet, and the problem statement with the exact numbers we're claiming in the video.
 
 Everything below this point is for whoever's writing code.
 
@@ -88,7 +89,9 @@ flowchart LR
 **`summary/water-bill.html`**: not generated from the notebook - a hand-built, standalone page
 whose `DATA.candidates` ranking and `plan()` allocation logic mirror Section 8/9's
 `scale_up_plan`/`close_gap` machinery. If that logic changes in the notebook, the HTML page's data
-needs a matching manual update.
+needs a matching manual update. Live at
+[dmatinho.github.io/seed-and-scale/summary/water-bill.html](https://dmatinho.github.io/seed-and-scale/summary/water-bill.html)
+via GitHub Pages on dmatinho's fork.
 
 ## Recent changes (Sept 14, 2026)
 
